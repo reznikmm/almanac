@@ -1,0 +1,19 @@
+on:
+  push:
+  pull_request:
+name: Build
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Build and test
+    steps:
+      - uses: actions/checkout@v2
+      - uses: alire-project/setup-alire@v5
+      - name: Build ephemeris project
+        run: alr -C ephemeris build
+      - name: Build astro project
+        run: alr -C astro build
+      - name: Run ephemeris tests
+        run: alr -C ephemeris/test run
+      - name: Run astro tests
+        run: alr -C astro/tests run
