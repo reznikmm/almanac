@@ -9,7 +9,7 @@
 --  Copyright (C) 2025 Juan A. de la Puente                          --
 --  Distributed under GPL 3.0                                        --
 -----------------------------------------------------------------------
-with Ada.Calendar;
+--  with Ada.Calendar;
 
 generic
    type Real is digits <>;
@@ -32,8 +32,13 @@ package Astro.Generic_Julian_Time is
    --  UT-like scale (UTC, UT1, TT, etc.). The corresponding
    --  Julian date is based on the same scale.
 
-   function Date_Of (T : Ada.Calendar.Time) return Date;
+   function Date_Of
+     (D : Positive;
+      M : Positive;
+      Y : Positive;
+      S : Duration) return Date;
+   --  function Date_Of (T : Ada.Calendar.Time) return Date;
 
-   function Time_Of (D : Date) return Ada.Calendar.Time;
+   --  function Time_Of (D : Date) return Ada.Calendar.Time;
 
 end Astro.Generic_Julian_Time;

@@ -12,17 +12,11 @@
 -----------------------------------------------------------------------
 with Ephemeris.Generic_Data_File;
 
-with Resources;
-with Ephemeris_Config;
-
 package body Ephemeris.Generic_State_Functions is
 
    package Data_File is
      new Generic_Data_File (Real, Ephemeris_Code);
    use Data_File;
-
-   package Ephemeris_Resources is
-      new Resources (Ephemeris_Config.Crate_Name);
 
    --  Internal data
    Pointers         : Polynomial_Pointers;
@@ -238,26 +232,23 @@ package body Ephemeris.Generic_State_Functions is
    -- Initialize --
    ----------------
 
-   procedure Open_Data
-   is
-      Default_Data_File : constant String 
-         := Ephemeris_Resources.Resource_Path & "de200.dat";
+   procedure Open_Data is
    begin
-      Open_Data (Default_Data_File);
+      Open_Data ("Default_Data_File");
    end Open_Data;
 
    procedure Open_Data (Data_File_Name : String)
    is
-      Parameters : Parameter_Record;
    begin
-      Data_File.Open (Data_File_Name);
-      Get_Parameters (Parameters);
-      Start_Date_Value := Parameters.Start_Date;
-      End_Date_Value   := Parameters.End_Date;
-      Interval         := Parameters.Interval;
-      AU_Value         := Parameters.AU;
-      EM_Ratio_Value   := Parameters.EM_Ratio;
-      Pointers   := Parameters.Pointers;
+      Start_Date_Value := 2458832.5;
+      End_Date_Value   := 2466160.5;
+      Interval         := 32.0;
+      AU_Value         := 149597870.659999996;
+      EM_Ratio_Value   := 81.3005869999999931;
+      Pointers   :=
+        ((3, 147, 183, 273, 303, 330, 354, 378, 396, 414, 702, 747, 0),
+         (12, 12, 15, 10,  9,  8,  8,  6,  6, 12, 15, 10, 0),
+         (4, 1, 2, 1, 1, 1, 1, 1, 1, 8, 1, 4, 0));
    end Open_Data;
 
    --------------

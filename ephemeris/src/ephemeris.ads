@@ -11,7 +11,7 @@
 --  Distributed under GPL 3.0                                        --
 -----------------------------------------------------------------------
 with Ephemeris_Config;
-with Resources;
+--  with Resources;
 
 package Ephemeris is
 
@@ -41,8 +41,8 @@ package Ephemeris is
                           DE441);
 
    --  Ephemeris data file resources
-   package Ephemeris_Resources is
-      new Resources (Ephemeris_Config.Crate_Name);
+   --  package Ephemeris_Resources is
+   --     new Resources (Ephemeris_Config.Crate_Name);
 
    type Celestial_Body is
    (Mercury, Venus,  Earth,   Mars,  Jupiter,

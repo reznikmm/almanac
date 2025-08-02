@@ -10,14 +10,14 @@
 --  Copyright (C) 2024 Juan A. de la Puente                          --
 --  Distributed under GPL 3.0                                        --
 -----------------------------------------------------------------------
-with Ada.Numerics.Generic_Real_Arrays;
+with Generic_Real_Arrays;
 
 generic
    type Real is digits <>;
    Ephemeris_Code : JPL_Ephemeris := DE200;
 package Ephemeris.Generic_State_Functions is
 
-   package Real_Arrays is new Ada.Numerics.Generic_Real_Arrays (Real);
+   package Real_Arrays is new Generic_Real_Arrays (Real);
    use Real_Arrays;
 
    type State is record
